@@ -4,3 +4,6 @@ def greet(name):
 
 # Example usage
 greet("Kalpak")
+
+greet("Nathan")
+

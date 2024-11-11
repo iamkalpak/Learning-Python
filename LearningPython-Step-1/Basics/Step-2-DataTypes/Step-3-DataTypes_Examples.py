@@ -26,6 +26,8 @@ print("------------------------------------------------")
 colors = ["red", "green", "blue", "yellow"]
 numbers = [1, 2, 3, 4, 5]
 print("List examples:", colors, numbers)
+mixed_list = ["name", 1, 3.14, True]
+print(mixed_list)
 print("------------------------------------------------")
 
 # Tuple: ordered, immutable collection

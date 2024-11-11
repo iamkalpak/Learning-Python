@@ -10,6 +10,7 @@ if 'meeting' in ToDo_List:
 else:
     print("Meeting is not in the list")
 print(ToDo_List)
+print("------------------------------------")
 
 # grades = [20,30,60,90,45,45,85,75]
 # grades.append(35)
@@ -20,6 +21,7 @@ print(ToDo_List)
 # print(sum/ len(grades))
 # print(max(grades))
 # print((min(grades)))
+# print("------------------------------------")
 
 #packing and unpacking tuple/list
 
@@ -29,3 +31,8 @@ print(type(nested_list[0]))
 print(type(nested_list[1]))
 print(type(nested_list[2]))
 print(type(nested_list))
+print("------------------------------------")
+
+
+age = int(input("Enter your age:"))
+print("Hi, your age is", age)

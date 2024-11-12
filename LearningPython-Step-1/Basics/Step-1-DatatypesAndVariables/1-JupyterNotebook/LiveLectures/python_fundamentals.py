@@ -71,11 +71,11 @@ _age_23 = 34
 
 # 2age = 23
 # first@name = 'Harsh'
-# @name = 12 #<-Error Here
+@name = 12
 
 print("Hello World")
 
-# Print('Hello World')#<-Error Here
+Print('Hello World')
 
 name = "Harsh"
 Name = "Singh"

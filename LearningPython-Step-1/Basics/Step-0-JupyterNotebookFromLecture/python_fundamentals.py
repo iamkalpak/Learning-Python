@@ -1049,3 +1049,397 @@ print(b)
 c = students.items() # Gets all key and value pairs
 print(c)
 
+print(students)
+
+student_copy = students
+
+print(students)
+print(student_copy)
+
+students['Name'] = 'Rahul'
+
+print(students)
+print(student_copy)
+
+student_copy1 = students.copy() # Shallow Copy
+print(student_copy1)
+print(students)
+
+students['age'] = 103
+print(students)
+print(student_copy1)
+
+# Iterating over dictionaries
+
+# Iterating over keys
+
+for keys in students.keys():
+  print(keys)
+
+# Iterating over values
+
+for value in students.values():
+  print(value)
+
+# Iterate over key value pairs
+
+for i,j in students.items():
+  print(i,':',j)
+
+for item in students.items():
+  print(item)
+
+# Nested Dictionary
+
+students = {
+    'student1': {"name":'Soni','age':20},
+    'student2': {'name' : "Harsh", 'age' : 25}
+}
+print(students)
+
+# Access nested Dictionary elements
+
+print(students['student2']['name'])
+print(students['student1']['age'])
+
+students.items()
+
+# Iterating Over Nested Dictionary
+
+for student_id, student_info in students.items():
+  print(student_id, ":", student_info)
+  for key,value in student_info.items():
+    print(key, ':', value)
+
+# Dictionary Comprehension
+
+squares = {i:i**2 for i in range(6)}
+print(squares)
+
+# Conditional Dictionary Comprehension
+
+evens = {i:i**2 for i in range(11) if i%2==0}
+print(evens)
+print(type(evens))
+
+"""# Questions"""
+
+# Q1) Use a dictionary to count the frequency of elements in list
+
+numbers = [1,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,5,5,5,5]
+frequency = {}
+
+for i in numbers:
+  if i in frequency:
+    frequency[i] += 1
+  else:
+    frequency[i] = 1
+
+print(frequency)
+
+"""#### Question 2
+You are given a list of integers representing the IDs of students who have signed up for an event, but some students have signed up multiple times by mistake. Your task is to:
+
+Remove duplicates to get the unique IDs of students who signed up.
+Identify students who have both signed up and attended the event (IDs are given in a separate list of attendees).
+Classify each student as:
+"Attended" if they signed up and attended.
+"No-show" if they signed up but did not attend.
+Finally, print a summary showing the count of "Attended" and "No-show" students.
+Input:
+
+A list of integers signups, where each element represents a student ID who signed up for the event. (It may contain duplicates.)
+A list of integers attendees, where each element represents a student ID who attended the event.
+Output: Print each unique student ID along with its status ("Attended" or "No-show") and a summary like the example below.
+"""
+
+# Example Input:
+
+signups = [101, 102, 103, 104, 101, 105, 106, 102]
+attendees = [102, 104, 106, 107]
+
+# Example Output:
+
+101: No-show
+102: Attended
+103: No-show
+104: Attended
+105: No-show
+106: Attended
+
+Summary:
+Attended: 3
+No-show: 3
+
+# Sol
+
+# Input lists
+signups = [101, 102, 103, 104, 101, 105, 106, 102]
+attendees = [102, 104, 106, 107]
+
+# Remove Duplicates and find Unique ID's
+unique_signups = set(signups)
+unique_attendees = set(attendees)
+
+# Create counters for attended and no-show students
+attended_count = 0
+no_show_count = 0
+
+# Classify them
+for i in unique_signups:
+  if i in unique_attendees:
+    print(i,": Attended")
+    attended_count += 1
+  else:
+    print(i,': No-show')
+    no_show_count += 1
+
+print()
+print("Summary:")
+print("Attended:",attended_count)
+print("No-Show:",no_show_count)
+
+"""#### Question
+You are given two lists of integers. Write a program to:
+
+Find the unique common elements between the two lists.
+Print these common elements in sorted order.
+If there are no common elements, print "No common elements".
+
+"""
+
+# Example Input:
+list1 = [1, 2, 3, 4, 5, 6, 7, 2]
+list2 = [5, 6, 7, 8, 9, 10, 6]
+
+# Example Output:
+Common elements: [5, 6, 7]
+
+# Sol
+
+list1 = [1, 2, 3, 4, 5, 6, 7, 2]
+list2 = [5, 6, 7, 8, 9, 10, 6]
+
+# Converting Lists to set to get unique values
+set1 = set(list1)
+set2 = set(list2)
+
+# Find common elements
+common_elements = set1 & set2
+
+# Check and print the results
+if common_elements:
+  print("Common Elements:", sorted(common_elements))
+else:
+  print("No Common Elements")
+
+"""#### Question
+
+You are given two lists:
+
+cart: A list of items purchased by a user (may contain duplicates).
+inventory: A list of items available in stock.
+Write a program to:
+
+Identify and print items purchased by the user that are not in stock.
+Count the number of unique items purchased by the user.
+"""
+
+# Example input
+cart = ["apple", "banana", "orange", "apple", "grape", "banana"]
+inventory = ["apple", "banana", "kiwi", "grape"]
+
+# Example Output
+Out of stock items: {'orange'}
+Unique items purchased: 4
+
+# Sol
+
+cart = ["apple", "banana", "orange", "apple", "grape", "banana"]
+inventory = ["apple", "banana", "kiwi", "grape"]
+
+# Converting to set to get unique values
+cart_set = set(cart)
+inventory_set = set(inventory)
+
+# Identifying out of stock items
+out_of_stock = cart_set - inventory_set
+print("out of stock items:", out_of_stock)
+
+# Counting Unique items
+print("Unqiue items purchased:", len(cart_set))
+
+"""#### Questions
+You are given a dictionary where the keys are student names and the values are lists of their scores in three subjects. Calculate and print the average score for each student.
+"""
+
+# Example Input:
+grades = {
+    "Alice": [85, 90, 78],
+    "Bob": [88, 76, 92],
+    "Charlie": [95, 100, 85]
+}
+
+# Example Output:
+Alice: 84.33
+Bob: 85.33
+Charlie: 93.33
+
+# Sol
+grades = {
+    "Alice": [85, 90, 78],
+    "Bob": [88, 76, 92],
+    "Charlie": [95, 100, 85]
+}
+
+# Calculate average scores
+for i,j in grades.items():
+  average = sum(j) / len(j)
+  print(i,":",average)
+
+name = "Harshvardhan"
+age = 32
+
+print("Hi", name, "your age is", age)
+print(f"Hi {name} your age is {age}")
+print(f"{i}:{average:.2f}")
+
+"""#### Question
+
+Write a program to count the frequency of each character in a given string and store it in a dictionary. Ignore spaces.
+"""
+
+# Example Input:
+text = "hello world"
+
+# Example Output
+{'h': 1, 'e': 1, 'l': 3, 'o': 2, 'w': 1, 'r': 1, 'd': 1}
+
+# Sol
+text = "hello world"
+
+# create a dictionary to store character frequencies
+char_count = {}
+
+# Iterate over each character
+for char in text:
+  if char != " ":
+    if char in char_count:
+      char_count[char] += 1
+    else:
+      char_count[char] = 1
+
+print(char_count)
+
+"""# Functions
+
+Definition:
+
+A function is a block of code that performs a specific task. Functions help in organizing code, reusing code, and improving readability.
+"""
+
+# Syntax
+
+def function_name(parameters):
+  """ What the function does """
+  # Function body
+  return expression
+
+## Why Functions ?
+
+num = 24
+if num%2==0:
+  print("The number is even")
+else:
+  print("The number is odd")
+
+def even_or_odd(num):
+  """ This Function finds even or odd """
+  if num % 2 == 0:
+    print("The number is even")
+  else:
+    print("The number is odd")
+
+# Calling this function
+even_or_odd(45)
+
+# Functions with multiple parameters
+
+def add(a,b):
+  return a+b
+
+result = add(4,6)
+print(result)
+
+def mul(a,b):
+  return a*b
+
+result = mul(4,6)
+print(result)
+
+def greet(name):
+  print(f"Hello {name} Welcome to the Class!")
+
+greet("Harsh")
+
+# Default Parameters
+
+def greet(name = "Guest"):
+  print(f"Hello {name} Welcome to the Class!")
+
+greet()
+
+"""### Positional Arguments
+* Positional arguments are passed to a function based on their position or order.
+* The function matches the values with the parameters in the order they are provided.
+"""
+
+def greet(name, age):
+  print(f"Hello {name}, you are {age} years old!")
+
+# Call using positional arguments
+greet("Alice", 25)
+
+"""#### Keyword Arguments
+* Keyword arguments are passed to a function by explicitly specifying the parameter name along with its value
+* The order of arguments does not matter since thet are matched by name
+"""
+
+def greet(name, age):
+  print(f"Hello {name}, you are {age} years old!")
+
+# Call using keyword arguments
+greet(age = 25, name="Alice")
+
+# Variable Length Arguments
+
+def print_numbers(*harsh):
+  for number in harsh:
+    print(number)
+
+print_numbers(1,2,3,4,5,6,7,8,19,123,23,2,42,35,345,23,23,"Hello","Harsh")
+
+def print_numbers(*args):
+  for number in args:
+    print(number)
+
+# Keyword Arguments
+
+def print_details(**kwargs):
+  for key,value in kwargs.items():
+    print(f'{key}:{value}')
+
+print_details(name="Harsh",age="32", country="India", phone_number = 982398232)
+
+# Return statements
+def mul(a,b):
+  return a*b
+
+mul(2,3)
+
+# Return multiple Parameters
+def mul(a,b):
+  return a*b,a,b
+
+mul(2,3)
+

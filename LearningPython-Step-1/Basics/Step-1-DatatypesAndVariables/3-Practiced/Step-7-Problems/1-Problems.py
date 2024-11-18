@@ -23,29 +23,27 @@ def alphabets(c1, c2):
     for i in range(start, end + 1):
         print(chr(i), end=" ")  # Convert back to character and print on the same line
 
-def numberOfSubsequences(S, W):
-    n, m = len(S), len(W)  # Get the lengths of S and W
-    count = 0  # Initialize count to store the number of times W appears as a subsequence
-    i = 0  # This pointer will go through the characters in S
-
-    while i < n:
-        j = 0  # This pointer will go through the characters in W from the beginning
-        
-        # Try to match W as a subsequence in S starting from current i
-        start_index = i  # Start from current i to avoid reuse
-        while start_index < n and j < m:
-            if S[start_index] == W[j]:  # If characters in S and W match
-                j += 1  # Move to the next character in W
-            start_index += 1  # Always move to the next character in S
-
-        # If we completed W as a subsequence
-        if j == m:
-            count += 1  # We found one subsequence, increase count
-            i = start_index  # Continue search from end of found subsequence
-        else:
-            break  # No further subsequences possible if W couldn't be completed
-
-    return count  # Return the total count of subsequences
+def numberOfSubsequences(S,W):
+        S=list(S)
+        W=list(W)
+        ans=0
+    
+        while True:  #  Untill no such subsequence exist
+            i=0
+            j=0
+            flag=0
+            while i<len(S):
+                if S[i]==W[j]:
+                    j+=1
+                    S[i]='*'
+                    if j==len(W):
+                        ans+=1   # A subsequence found
+                        flag=1
+                        break
+                i+=1
+            if flag==0:   # No subsequence found in this iteration
+                break    
+        return ans  
 
 def numberOfSubseq(S, W):
     endOfS, endOfW = len(S),len(W)

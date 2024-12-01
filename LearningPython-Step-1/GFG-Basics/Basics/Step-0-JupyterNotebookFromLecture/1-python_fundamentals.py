@@ -1443,3 +1443,291 @@ def mul(a,b):
 
 mul(2,3)
 
+"""# Data Analysis With Python
+
+## Numpy
+
+NumPy is a fundamental library for scientific computing in Python. It provides support for arrays and matrices, along with a collection of mathematical functions to operate on these data structures. In this lesson, we will cover the basics of NumPy, focusing on arrays and vectorized operations.
+"""
+
+pip install numpy
+
+import numpy as np
+
+# Creating array using Numpy
+# Creating a 1d array
+
+arr1 = np.array([1,2,3,4,5])
+print(arr1)
+print(type(arr1))
+print(arr1.shape)
+
+# 1d Array
+arr2 = np.array([1,2,3,4,5])
+arr2.reshape(1,5) # 1 Row and 5 Columns
+
+arr2 = np.array([[1,2,3,4,5]])
+arr2.shape
+
+# 2d array
+arr2 = np.array([[1,2,3,4,5],[2,3,4,5,6]])
+print(arr2)
+print(arr2.shape)
+
+# numpy arange function
+
+arr3 = np.arange(0,10,2).reshape(5,1)
+print(arr3)
+# print(arr3.shape)
+
+# numpy ones
+np.ones((10,9))
+
+# Identity Matrix
+np.eye(10)
+
+# Attributes of Numpy Array
+arr = np.array([[1,2,3],[4,5,6]])
+
+print("Array:\n", arr)
+print("............")
+print("Shape", arr.shape) # It has 2 rows and 3 Columns
+print("............")
+print("Number of Dimensions:", arr.ndim) # Identify the Dimensions
+print("............")
+print("Size (number of elements):", arr.size)
+print("............")
+print("Data Type:", arr.dtype)
+print("............")
+print("Item size in bytes:", arr.itemsize)
+
+## Numpy Vectorized Operations
+
+arr1 = np.array([1,2,3,4,5])
+arr2 = np.array([10,20,30,40,50])
+
+### Element wise addition
+print("Addition:", arr1+arr2)
+
+### Element wise Substraction
+print("Substraction:", arr1-arr2)
+
+### Element wise Multiplication
+print("Multiplication:", arr1 * arr2)
+
+### Element wise Division
+print("Division", arr1/arr2)
+
+### Universal Functions
+
+arr = np.array([2,3,4,5,6])
+
+# Square root
+print(np.sqrt(arr))
+
+# Exponential
+print(np.exp(arr))
+
+# Sine
+print(np.sin(arr))
+
+# Natural log
+print(np.log(arr))
+
+## Array Slicing
+
+arr = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+print("Array : \n", arr)
+
+"""Start: stop: step"""
+
+print(arr[1:,1:3])
+
+print(arr[0,0])
+print('.........')
+print(arr[0:2,2:])
+print('.........')
+print(arr[1:,2:])
+
+print(arr)
+
+## Modifying array elements
+arr[0,0] = 100
+print(arr)
+
+arr[1:,1:3] = 100
+print(arr)
+
+data = np.array([1,2,3,4,5,6,7,8,9,10])
+
+# Mean
+mean = np.mean(data)
+print("Mean:",mean)
+print('...............')
+
+# Median
+median = np.median(data)
+print("Median:",median)
+print('...............')
+
+# Standard Deviation
+std_dev = np.std(data)
+print("Standard Deviation:", std_dev)
+print('...............')
+
+# Variance
+variance = np.var(data)
+print("Variance",variance)
+
+# Logical Operations
+
+data = np.array([1,2,3,4,5,6,7,8,9,10])
+
+data[(data>5)& (data<=8)]
+
+"""# Pandas- DataFrame and Series
+
+Pandas is a powerful data manipulation library in Python, widely used for data analysis and data cleaning. It provides two primary data structures: Series and DataFrame. A Series is a one-dimensional array-like object, while a DataFrame is a two-dimensional, size-mutable, and potentially heterogeneous tabular data structure with labeled axes (rows and columns).
+"""
+
+import pandas as pd
+
+# Series
+# Series is a 1d array like object. It is similar to a column in a table
+
+import pandas as pd
+data = [5,6,7,8,9,10,11,12]
+series = pd.Series(data)
+print("Series is \n",series)
+print(type(series))
+
+## Creating a Series from a dictionary
+data = {'a':1, 'b':2, 'c':3, 'd':4, 'e':5}
+series_dict = pd.Series(data)
+print(series_dict)
+
+data = [10,20,30,40,50]
+indexes = ['a','b','c','d','e']
+ser = pd.Series(data,index=indexes)
+print(ser)
+print(type(ser))
+
+## DataFrame
+## Create a DataFrame from a dictionary of list
+
+data = {
+    "Name":['Harshvardhan','Jack','John','Adam'],
+    "Age":[24,26,30,32],
+    "City":["Noida","Bangalore","New York","Florida"]
+}
+
+df = pd.DataFrame(data)
+print(df)
+print(type(df))
+
+## Create a DataFrame From a list of Dictionaries
+
+data = [
+    {"Name":"Harsh","Age":24,"City":'Noida'},
+    {"Name":"Jack","Age":27,"City":'Bangalore'},
+    {"Name":"Rahul","Age":22,"City":'Florida'},
+    {"Name":"Divya","Age":30,"City":'USA'},
+]
+
+df = pd.DataFrame(data)
+print(df)
+print(type(df))
+
+df
+
+df = pd.read_csv('/content/sales_data.csv')
+df
+
+df.head(5)
+
+df.tail(5)
+
+df.sample(5)
+
+df
+
+## Accessing Data From DataFrame
+df
+
+a = df["Name"]
+print(a)
+print(type(a))
+
+df['Age']
+
+df.loc[0] # Row Index
+
+df.iloc[0] # Index
+
+df
+
+## Accessing a specified element
+df.at[2,'City']
+
+df.at[1,'Name']
+
+df.at[3,'Age']
+
+df
+
+## Accessing a specified element using iat
+df.iat[2,2] # 2nd Index Row and 2nd Index Column
+
+df.iat[1,0]
+
+df.iat[3,1]
+
+## Data Manipulation with DataFrames
+df
+
+## Adding a Column
+df['Salary']=[60000,70000,30000,50000]
+df
+
+df['Country'] = ['USA',"India","UK",'Argentina']
+df
+
+## Remove a Column
+df.drop('Salary', axis=1, inplace=True)
+
+df
+
+df.drop('Country',axis=1,inplace=True)
+
+df
+
+df['Age'] = df['Age']+1
+df
+
+df.drop(1,inplace=True)
+
+df
+
+df = pd.read_csv('/content/sales_data.csv')
+df.head(5)
+
+## Display the data types of each column
+df.dtypes
+
+## Describe the DataFrame
+df.describe()
+
+## Handling Missing Values
+df.isnull().any()
+
+df.isnull().sum()
+
+df_filled = df.fillna(0)
+
+df_filled.isnull().sum()
+
+df.head(2)
+
+df = df.rename(columns={'Date':'Date of Purchase'})
+df.head(2)
+
